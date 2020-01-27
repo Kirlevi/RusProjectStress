@@ -6,23 +6,35 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>391</width>
-    <height>489</height>
+    <width>293</width>
+    <height>387</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Тренажер</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(219, 215, 210);</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QTableWidget" name="record_table">
     <property name="geometry">
      <rect>
       <x>15</x>
-      <y>21</y>
-      <width>361</width>
-      <height>421</height>
+      <y>11</y>
+      <width>261</width>
+      <height>351</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(255, 255, 255);</string>
+    </property>
+    <property name="sortingEnabled">
+     <bool>false</bool>
+    </property>
+    <attribute name="horizontalHeaderStretchLastSection">
+     <bool>true</bool>
+    </attribute>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
@@ -30,7 +42,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>391</width>
+     <width>293</width>
      <height>21</height>
     </rect>
    </property>

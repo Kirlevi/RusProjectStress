@@ -13,17 +13,20 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(391, 489)
+        MainWindow.resize(293, 387)
+        MainWindow.setStyleSheet("background-color: rgb(219, 215, 210);")
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.record_table = QtWidgets.QTableWidget(self.centralwidget)
-        self.record_table.setGeometry(QtCore.QRect(15, 21, 361, 421))
+        self.record_table.setGeometry(QtCore.QRect(15, 11, 261, 351))
+        self.record_table.setStyleSheet("background-color: rgb(255, 255, 255);")
         self.record_table.setObjectName("record_table")
         self.record_table.setColumnCount(0)
         self.record_table.setRowCount(0)
+        self.record_table.horizontalHeader().setStretchLastSection(True)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 391, 21))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 293, 21))
         self.menubar.setObjectName("menubar")
         MainWindow.setMenuBar(self.menubar)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
@@ -35,4 +38,5 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "Тренажер"))
+        self.record_table.setSortingEnabled(False)

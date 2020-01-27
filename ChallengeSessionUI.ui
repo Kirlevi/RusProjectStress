@@ -6,12 +6,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>391</width>
-    <height>489</height>
+    <width>389</width>
+    <height>487</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Тренажер</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(219, 215, 210);</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QPushButton" name="answer_btn">
@@ -25,11 +28,15 @@
     </property>
     <property name="font">
      <font>
-      <family>NovemberPro-Black</family>
-      <pointsize>19</pointsize>
+      <family>Verdana</family>
+      <pointsize>16</pointsize>
       <weight>75</weight>
       <bold>true</bold>
      </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(76, 47, 39);
+background-color: rgb(220, 220, 220);</string>
     </property>
     <property name="text">
      <string>Ответить</string>
@@ -39,39 +46,51 @@
     <property name="geometry">
      <rect>
       <x>30</x>
-      <y>50</y>
+      <y>40</y>
       <width>351</width>
-      <height>31</height>
+      <height>41</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <family>NovemberPro-Black</family>
+      <family>Verdana</family>
       <pointsize>12</pointsize>
       <weight>75</weight>
       <bold>true</bold>
      </font>
     </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(76, 47, 39);</string>
+    </property>
     <property name="text">
-     <string>Напишите слово, выделив ударение:</string>
+     <string>Напишите слово, выделив ударение строчным символом</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+    <property name="wordWrap">
+     <bool>true</bool>
     </property>
    </widget>
    <widget class="QLabel" name="question_lbl">
     <property name="geometry">
      <rect>
       <x>30</x>
-      <y>90</y>
+      <y>100</y>
       <width>351</width>
       <height>31</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <family>NovemberPro-Black</family>
+      <family>Verdana</family>
       <pointsize>12</pointsize>
       <weight>75</weight>
       <bold>true</bold>
      </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(26, 21, 63);</string>
     </property>
     <property name="text">
      <string>&lt;МЕСТО_ДЛЯ_СЛОВА&gt;</string>
@@ -88,9 +107,12 @@
     </property>
     <property name="font">
      <font>
-      <family>Microsoft PhagsPa</family>
+      <family>Calibri</family>
       <pointsize>15</pointsize>
      </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(241, 241, 241);</string>
     </property>
    </widget>
    <widget class="QLabel" name="heart_1">
@@ -101,6 +123,9 @@
       <width>81</width>
       <height>81</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(219, 215, 210);</string>
     </property>
     <property name="text">
      <string/>
@@ -153,19 +178,23 @@
    <widget class="QLabel" name="score_lbl">
     <property name="geometry">
      <rect>
-      <x>100</x>
+      <x>90</x>
       <y>350</y>
-      <width>231</width>
+      <width>191</width>
       <height>31</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <family>NovemberPro-Black</family>
+      <family>Verdana</family>
       <pointsize>12</pointsize>
       <weight>75</weight>
+      <italic>false</italic>
       <bold>true</bold>
      </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(76, 47, 39);</string>
     </property>
     <property name="text">
      <string>Количество очков: 0</string>
@@ -182,11 +211,15 @@
     </property>
     <property name="font">
      <font>
-      <family>NovemberPro-Black</family>
+      <family>Verdana</family>
       <pointsize>19</pointsize>
       <weight>75</weight>
       <bold>true</bold>
      </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(76, 47, 39);
+background-color: rgb(220, 220, 220);</string>
     </property>
     <property name="text">
      <string>Finish</string>
@@ -198,7 +231,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>391</width>
+     <width>389</width>
      <height>21</height>
     </rect>
    </property>

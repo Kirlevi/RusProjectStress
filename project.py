@@ -10,9 +10,10 @@ from ChallengeSessionUI import Ui_MainWindow as Ui_ChallengeSession
 from StatisticsUI import Ui_MainWindow as Ui_Statistics
 
 
-with open('stress.csv', encoding='windows-1251') as csvfile:
+with open('mistakes.csv', encoding='windows-1251') as csvfile:
     reader = csv.reader(csvfile, delimiter=';', quotechar='"')
-    words = [(i[0], i[1]) for i in reader]
+    mistakes = [(i[0], i[1]) for i in reader]
+mistakes = set(mistakes)
 
 
 class MainForm(QMainWindow, Ui_MainWindow):
@@ -20,13 +21,17 @@ class MainForm(QMainWindow, Ui_MainWindow):
         super().__init__()
         self.setupUi(self)
         self.start_training_btn.clicked.connect(self.open_session)
+        self.work_on_mistakes_btn.clicked.connect(self.open_work_on_mistakes)
         self.game_mode_btn.clicked.connect(self.open_challenge_session)
         self.record_table_btn.clicked.connect(self.record_table)
-        self.about_box_btn.clicked.connect(self.open_about_box)
 
     def open_session(self):
         self.session_form = SessionForm()
         self.session_form.show()
+
+    def open_work_on_mistakes(self):
+        self.work_on_mistakes = WorkOnMistakes()
+        self.work_on_mistakes.show()
 
     def open_challenge_session(self):
         self.challenge_session_form = ChallengeSessionForm()
@@ -35,12 +40,6 @@ class MainForm(QMainWindow, Ui_MainWindow):
     def record_table(self):
         self.statistics_form = StatisticsForm()
         self.statistics_form.show()
-
-    def open_about_box(self):
-        if self.about_box_btn.text() == 'О программе':
-            self.about_box_btn.setText('by kirlevi')
-        else:
-            self.about_box_btn.setText('О программе')
 
 
 class SessionForm(QMainWindow, Ui_Session):
@@ -51,18 +50,68 @@ class SessionForm(QMainWindow, Ui_Session):
         self.finish_btn.clicked.connect(self.finish)
         self.true_ans = 0
         self.false_ans = 0
+
+        with open('stress.csv', encoding='windows-1251') as csvfile:
+            reader = csv.reader(csvfile, delimiter=';', quotechar='"')
+            self.words = [(i[0], i[1]) for i in reader]
         self.random_word_to_check()
 
-    def random_word_to_check(self):
-        self.word = choice(words)
-        self.question_lbl.setText(self.word[1])
+    def random_word_to_check(self):  # Функция случайного взятия слов из таблицы
+        if len(self.words) != 0:
+            self.word = choice(self.words)
+            self.question_lbl.setText(self.word[1])
+        else:
+            self.question_lbl.setText('Слова закончились :)')
 
-    def true_or_false_counter(self):
+    def true_or_false_counter(self):  # Проверка правильности введенного ответа
         self.error_lbl.clear()
         if self.answer_field.text() == '':
             self.error_lbl.setText('Введите Ваш ответ в поле!!!')
         elif self.answer_field.text() == self.word[0]:
             self.true_ans += 1
+            self.words.pop(self.words.index(self.word))
+            self.random_word_to_check()
+            self.answer_field.clear()
+        else:
+            self.false_ans += 1
+            mistakes.add(self.word)
+            self.error_lbl.setText(f'Правильный ответ: {self.word[0]}')
+            self.random_word_to_check()
+
+        self.true_counter.setText(f'ВЕРНО: {self.true_ans}')
+        self.false_counter.setText(f'НЕВЕРНО: {self.false_ans}')
+
+    def finish(self):  # Заканчивает сессию и записывает ошибки в отдельный файл
+        with open('mistakes.csv', 'w', newline='') as csvfile:
+            writer = csv.writer(csvfile, delimiter=';')
+            for i in mistakes:
+                writer.writerow(i)
+        self.close()
+        self.destroy()
+
+
+class WorkOnMistakes(SessionForm):
+    def __init__(self):
+        super().__init__()
+        self.setupUi(self)
+        self.answer_btn.clicked.connect(self.true_or_false_counter)
+        self.finish_btn.clicked.connect(self.finish)
+        self.true_ans = 0
+        self.false_ans = 0
+        self.to_discard_from_mistakes = set()
+
+        with open('mistakes.csv', encoding='windows-1251') as csvfile:
+            reader = csv.reader(csvfile, delimiter=';', quotechar='"')
+            self.words = [(i[0], i[1]) for i in reader]
+        self.random_word_to_check()
+
+    def true_or_false_counter(self):  # Проверка правильности введенного ответа
+        self.error_lbl.clear()
+        if self.answer_field.text() == '':
+            self.error_lbl.setText('Введите Ваш ответ в поле!!!')
+        elif self.answer_field.text() == self.word[0]:
+            self.true_ans += 1
+            self.words.pop(self.words.index(self.word))
             self.random_word_to_check()
             self.answer_field.clear()
         else:
@@ -73,7 +122,13 @@ class SessionForm(QMainWindow, Ui_Session):
         self.true_counter.setText(f'ВЕРНО: {self.true_ans}')
         self.false_counter.setText(f'НЕВЕРНО: {self.false_ans}')
 
-    def finish(self):
+    def finish(self):  # Заканчивает сессию и записывает ошибки в отдельный файл
+        for i in self.words:
+            self.to_discard_from_mistakes.add(i)
+        with open('mistakes.csv', 'w', newline='') as csvfile:
+            writer = csv.writer(csvfile, delimiter=';')
+            for i in self.to_discard_from_mistakes:
+                writer.writerow(i)
         self.close()
         self.destroy()
 
@@ -86,11 +141,17 @@ class ChallengeSessionForm(QMainWindow, Ui_ChallengeSession):
         self.finish_btn.clicked.connect(self.finish)
         self.score = 0
         self.attemptions = 3
+        with open('stress.csv', encoding='windows-1251') as csvfile:
+            reader = csv.reader(csvfile, delimiter=';', quotechar='"')
+            self.words = [(i[0], i[1]) for i in reader]
         self.random_word_to_check()
 
     def random_word_to_check(self):
-        self.word = choice(words)
-        self.question_lbl.setText(self.word[1])
+        if len(self.words) != 0:
+            self.word = choice(self.words)
+            self.question_lbl.setText(self.word[1])
+        else:
+            self.question_lbl.setText('Слова закончились :)')
 
 
     def true_or_false_counter(self):
@@ -112,7 +173,7 @@ class ChallengeSessionForm(QMainWindow, Ui_ChallengeSession):
 
     def finish(self):
         i, okBtnPressed = QInputDialog.getText(self, "Введите ник",
-                                               "Введите ник")
+                                               "Введите ник (только латиница)")
         if okBtnPressed:
             player = [i, self.score]
             with open('records.csv', 'a', newline='') as csvfile:
@@ -129,7 +190,7 @@ class StatisticsForm(QMainWindow, Ui_Statistics):
         self.loadTable('records.csv')
 
     def loadTable(self, table_name):
-        with open('records.csv', encoding="utf8") as csvfile:
+        with open(table_name, encoding="utf8") as csvfile:
             reader = csv.reader(csvfile, delimiter=';', quotechar='"')
             title = next(reader)
             self.record_table.setColumnCount(len(title))

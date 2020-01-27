@@ -11,7 +11,10 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Тренажер</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(219, 215, 210);</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QLabel" name="true_counter">
@@ -25,11 +28,12 @@
     </property>
     <property name="font">
      <font>
-      <pointsize>15</pointsize>
+      <family>Verdana</family>
+      <pointsize>14</pointsize>
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(0, 188, 0);
+     <string notr="true">background-color: rgb(0, 102, 51);
 color: rgb(227, 227, 227);</string>
     </property>
     <property name="text">
@@ -53,11 +57,12 @@ color: rgb(227, 227, 227);</string>
     </property>
     <property name="font">
      <font>
-      <pointsize>15</pointsize>
+      <family>Verdana</family>
+      <pointsize>14</pointsize>
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(203, 0, 0);
+     <string notr="true">background-color: rgb(170, 0, 0);
 color: rgb(227, 227, 227);</string>
     </property>
     <property name="text">
@@ -81,11 +86,16 @@ color: rgb(227, 227, 227);</string>
     </property>
     <property name="font">
      <font>
-      <family>NovemberPro-Black</family>
-      <pointsize>19</pointsize>
+      <family>Verdana</family>
+      <pointsize>16</pointsize>
       <weight>75</weight>
       <bold>true</bold>
+      <strikeout>false</strikeout>
      </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(76, 47, 39);
+background-color: rgb(220, 220, 220);</string>
     </property>
     <property name="text">
      <string>Ответить</string>
@@ -95,21 +105,33 @@ color: rgb(227, 227, 227);</string>
     <property name="geometry">
      <rect>
       <x>30</x>
-      <y>80</y>
+      <y>50</y>
       <width>351</width>
-      <height>31</height>
+      <height>51</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <family>NovemberPro-Black</family>
+      <family>Verdana</family>
       <pointsize>12</pointsize>
       <weight>75</weight>
       <bold>true</bold>
      </font>
     </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(76, 47, 39);</string>
+    </property>
     <property name="text">
-     <string>Напишите слово, выделив ударение:</string>
+     <string>Напишите слово, выделив ударение строчным символом</string>
+    </property>
+    <property name="scaledContents">
+     <bool>false</bool>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+    <property name="wordWrap">
+     <bool>true</bool>
     </property>
    </widget>
    <widget class="QLabel" name="question_lbl">
@@ -123,11 +145,14 @@ color: rgb(227, 227, 227);</string>
     </property>
     <property name="font">
      <font>
-      <family>NovemberPro-Black</family>
+      <family>Verdana</family>
       <pointsize>12</pointsize>
       <weight>75</weight>
       <bold>true</bold>
      </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(26, 21, 63);</string>
     </property>
     <property name="text">
      <string>&lt;МЕСТО_ДЛЯ_СЛОВА&gt;</string>
@@ -144,11 +169,15 @@ color: rgb(227, 227, 227);</string>
     </property>
     <property name="font">
      <font>
-      <family>NovemberPro-Black</family>
+      <family>Verdana</family>
       <pointsize>13</pointsize>
       <weight>75</weight>
       <bold>true</bold>
      </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(76, 47, 39);
+background-color: rgb(220, 220, 220);</string>
     </property>
     <property name="text">
      <string>Finish</string>
@@ -165,7 +194,7 @@ color: rgb(227, 227, 227);</string>
     </property>
     <property name="font">
      <font>
-      <family>NovemberPro-Black</family>
+      <family>Verdana</family>
       <pointsize>12</pointsize>
       <weight>75</weight>
       <bold>true</bold>
@@ -175,7 +204,7 @@ color: rgb(227, 227, 227);</string>
      <cursorShape>ArrowCursor</cursorShape>
     </property>
     <property name="styleSheet">
-     <string notr="true">color: rgb(255, 0, 0);</string>
+     <string notr="true">color: rgb(112, 35, 45);</string>
     </property>
     <property name="text">
      <string/>
@@ -192,9 +221,12 @@ color: rgb(227, 227, 227);</string>
     </property>
     <property name="font">
      <font>
-      <family>Microsoft PhagsPa</family>
+      <family>Calibri</family>
       <pointsize>15</pointsize>
      </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(241, 241, 241);</string>
     </property>
    </widget>
   </widget>
