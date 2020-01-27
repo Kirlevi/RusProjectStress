@@ -12,7 +12,7 @@ from StatisticsUI import Ui_MainWindow as Ui_Statistics
 
 with open('mistakes.csv', encoding='windows-1251') as csvfile:
     reader = csv.reader(csvfile, delimiter=';', quotechar='"')
-    mistakes = [(i[0], i[1]) for i in reader]
+    mistakes = [(i[0], i[1]) for i in list(reader)]
 mistakes = set(mistakes)
 
 
