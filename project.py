@@ -82,7 +82,6 @@ class SessionForm(QMainWindow, Ui_Session):
             for i in self.mistakes:
                 writer.writerow(i)
         self.mistakes = set()
-        print(self.mistakes)
         self.close()
         self.destroy()
 
