@@ -63,7 +63,7 @@ background-color: rgb(220, 220, 220);</string>
      <string notr="true">color: rgb(76, 47, 39);</string>
     </property>
     <property name="text">
-     <string>Напишите слово, выделив ударение строчным символом</string>
+     <string>Напишите слово, выделив ударение прописной буквой</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
@@ -180,7 +180,7 @@ background-color: rgb(220, 220, 220);</string>
      <rect>
       <x>90</x>
       <y>350</y>
-      <width>191</width>
+      <width>261</width>
       <height>31</height>
      </rect>
     </property>

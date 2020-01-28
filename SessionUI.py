@@ -123,6 +123,6 @@ class Ui_MainWindow(object):
         self.true_counter.setText(_translate("MainWindow", "ВЕРНО: 0"))
         self.false_counter.setText(_translate("MainWindow", "НЕВЕРНО: 0"))
         self.answer_btn.setText(_translate("MainWindow", "Ответить"))
-        self.instr_lbl.setText(_translate("MainWindow", "Напишите слово, выделив ударение строчным символом"))
+        self.instr_lbl.setText(_translate("MainWindow", "Напишите слово, выделив ударение прописной буквой"))
         self.question_lbl.setText(_translate("MainWindow", "<МЕСТО_ДЛЯ_СЛОВА>"))
         self.finish_btn.setText(_translate("MainWindow", "Finish"))

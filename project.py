@@ -10,12 +10,6 @@ from ChallengeSessionUI import Ui_MainWindow as Ui_ChallengeSession
 from StatisticsUI import Ui_MainWindow as Ui_Statistics
 
 
-with open('mistakes.csv', encoding='windows-1251') as csvfile:
-    reader = csv.reader(csvfile, delimiter=';', quotechar='"')
-    mistakes = [(i[0], i[1]) for i in list(reader)]
-mistakes = set(mistakes)
-
-
 class MainForm(QMainWindow, Ui_MainWindow):
     def __init__(self):
         super().__init__()
@@ -50,6 +44,7 @@ class SessionForm(QMainWindow, Ui_Session):
         self.finish_btn.clicked.connect(self.finish)
         self.true_ans = 0
         self.false_ans = 0
+        self.mistakes = set()
 
         with open('stress.csv', encoding='windows-1251') as csvfile:
             reader = csv.reader(csvfile, delimiter=';', quotechar='"')
@@ -74,7 +69,7 @@ class SessionForm(QMainWindow, Ui_Session):
             self.answer_field.clear()
         else:
             self.false_ans += 1
-            mistakes.add(self.word)
+            self.mistakes.add(self.word)
             self.error_lbl.setText(f'Правильный ответ: {self.word[0]}')
             self.random_word_to_check()
 
@@ -84,8 +79,10 @@ class SessionForm(QMainWindow, Ui_Session):
     def finish(self):  # Заканчивает сессию и записывает ошибки в отдельный файл
         with open('mistakes.csv', 'w', newline='') as csvfile:
             writer = csv.writer(csvfile, delimiter=';')
-            for i in mistakes:
+            for i in self.mistakes:
                 writer.writerow(i)
+        self.mistakes = set()
+        print(self.mistakes)
         self.close()
         self.destroy()
 

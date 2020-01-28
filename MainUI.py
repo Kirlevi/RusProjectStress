@@ -105,8 +105,8 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "Тренажер"))
-        self.label.setText(_translate("MainWindow", "Тренажер по русскому языку \n"
-" \"Ударения\""))
+        self.label.setText(_translate("MainWindow", "Тренажер ударений\n"
+"\"АпострОф\""))
         self.start_training_btn.setText(_translate("MainWindow", "Начать тренировку"))
         self.game_mode_btn.setText(_translate("MainWindow", "Игровой режим"))
         self.record_table_btn.setWhatsThis(_translate("MainWindow", "<html><head/><body><p><br/></p></body></html>"))

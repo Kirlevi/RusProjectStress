@@ -57,8 +57,8 @@
      <string notr="true">color: rgb(76, 47, 39);</string>
     </property>
     <property name="text">
-     <string>Тренажер по русскому языку 
- &quot;Ударения&quot;</string>
+     <string>Тренажер ударений
+&quot;АпострОф&quot;</string>
     </property>
     <property name="textFormat">
      <enum>Qt::RichText</enum>

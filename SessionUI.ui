@@ -122,7 +122,7 @@ background-color: rgb(220, 220, 220);</string>
      <string notr="true">color: rgb(76, 47, 39);</string>
     </property>
     <property name="text">
-     <string>Напишите слово, выделив ударение строчным символом</string>
+     <string>Напишите слово, выделив ударение прописной буквой</string>
     </property>
     <property name="scaledContents">
      <bool>false</bool>

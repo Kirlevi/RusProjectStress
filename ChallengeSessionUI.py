@@ -78,7 +78,7 @@ class Ui_MainWindow(object):
         self.heart_3.setScaledContents(True)
         self.heart_3.setObjectName("heart_3")
         self.score_lbl = QtWidgets.QLabel(self.centralwidget)
-        self.score_lbl.setGeometry(QtCore.QRect(90, 350, 191, 31))
+        self.score_lbl.setGeometry(QtCore.QRect(90, 350, 261, 31))
         font = QtGui.QFont()
         font.setFamily("Verdana")
         font.setPointSize(12)
@@ -115,7 +115,7 @@ class Ui_MainWindow(object):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "Тренажер"))
         self.answer_btn.setText(_translate("MainWindow", "Ответить"))
-        self.instr_lbl.setText(_translate("MainWindow", "Напишите слово, выделив ударение строчным символом"))
+        self.instr_lbl.setText(_translate("MainWindow", "Напишите слово, выделив ударение прописной буквой"))
         self.question_lbl.setText(_translate("MainWindow", "<МЕСТО_ДЛЯ_СЛОВА>"))
         self.score_lbl.setText(_translate("MainWindow", "Количество очков: 0"))
         self.finish_btn.setText(_translate("MainWindow", "Finish"))
